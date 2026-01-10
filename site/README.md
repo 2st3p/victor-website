@@ -45,7 +45,16 @@ To enable a hosted form provider, set `src/data/site-links.json`:
 
 ## Deploy (Cloudflare Pages)
 
-Project root: `site/`
+The site is deployed from the repository root (not from `site/` subdirectory).
 
-- Build command: `npm run build`
-- Build output directory: `dist`
+**Cloudflare Pages Settings:**
+- Framework preset: Astro
+- Build command: `cd site && npm install && npm run build`
+- Build output directory: `site/dist`
+- Production branch: `main`
+
+**Repository**: https://github.com/2st3p/victor-website
+
+**Domain**: victordonahue.com
+
+Every push to `main` automatically triggers a new deployment.
