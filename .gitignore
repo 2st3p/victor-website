@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+.astro/
+
+# OS files
+.DS_Store
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Large image archives (not needed for deployment)
+Backup images/
+Image picks/

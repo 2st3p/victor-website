@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-padding-top: 6.5rem;
+}
+
+.no-smoothing {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 840s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content {
+    animation: none;
+  }
+}
+
+.img-halftone {
+  filter: grayscale(100%) contrast(110%);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+.distressed-display {
+  --stroke-width: 1px;
+  --shadow-x: 2px;
+  --shadow-y: 2px;
+
+  -webkit-text-stroke: var(--stroke-width) currentColor;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--shadow-x) var(--shadow-y) 0px currentColor;
+}
+
+.distressed-display--heavy {
+  --stroke-width: 2px;
+  --shadow-x: 4px;
+  --shadow-y: 4px;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27160%27%20height%3D%27160%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27/%3E%3C/filter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23n)%27%20opacity%3D%270.4%27/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* DISCO MODE OVERRIDES */
+html.disco-mode body,
+html.disco-mode section {
+  background-color: black !important;
+  color: white !important;
+}
+
+html.disco-mode .border-black,
+html.disco-mode .border-black\/20,
+html.disco-mode .border-black\/10,
+html.disco-mode .border-black\/30,
+html.disco-mode .border-black\/50 {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html.disco-mode .text-black {
+  color: white !important;
+}
+
+html.disco-mode .bg-white {
+  background-color: black !important;
+}
+
+html.disco-mode .dark\:bg-white {
+  background-color: black !important;
+}
+
+html.disco-mode .dark\:text-black {
+  color: white !important;
+}

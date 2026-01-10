@@ -1,0 +1,22 @@
+[
+  { "date": "13.06.25", "city": "ISLA CRISTINA", "venue": "ISLA SONICA FEST" },
+  { "date": "14.06.25", "city": "ALCAZAR SAN JUAN", "venue": "ESPACIO SONORO" },
+  { "date": "15.06.25", "city": "OVIEDO", "venue": "ALMACENES" },
+  { "date": "16.06.25", "city": "SANTANDER", "venue": "ROCK BEER THE NEW" },
+  { "date": "17.06.25", "city": "VIGO", "venue": "RADAR ESTUDIOS" },
+  { "date": "18.06.25", "city": "MADRID", "venue": "GRUTA 77" },
+  { "date": "19.06.25", "city": "VALENCIA", "venue": "LOCO CLUB" },
+  { "date": "20.06.25", "city": "CASTELLON", "venue": "PUB TERRA" },
+  { "date": "21.06.25", "city": "BORDEAUX", "venue": "RELACHE FEST" },
+  { "date": "22.06.25", "city": "PERPIGNAN", "venue": "LE NAUTILUS" },
+  { "date": "24.06.25", "city": "KOLN", "venue": "SONIC BALLROOM" },
+  { "date": "26.06.25", "city": "HAMBURG", "venue": "NOCHTWACHE" },
+  { "date": "27.06.25", "city": "HUSUM", "venue": "SPEICHER" },
+  { "date": "28.06.25", "city": "DORTMUND", "venue": "EXTRASCHICHT FEST" },
+  { "date": "29.06.25", "city": "LONDON", "venue": "MOTH CLUB" },
+  { "date": "30.06.25", "city": "HULL", "venue": "POLAR BEAR CLUB" },
+  { "date": "01.07.25", "city": "GLASGOW", "venue": "OLD HAIRDRESSERS" },
+  { "date": "02.07.25", "city": "BIRMINGHAM", "venue": "THE HARE & HOUND" },
+  { "date": "03.07.25", "city": "BRISTOL", "venue": "EXCHANGE" },
+  { "date": "04.07.25", "city": "PARIS", "venue": "SUPERSONIC" }
+]

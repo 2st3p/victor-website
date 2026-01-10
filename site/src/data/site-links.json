@@ -1,0 +1,20 @@
+{
+  "emails": {
+    "generalLabel": "GENERAL INQUIRIES",
+    "generalEmail": "victorldonahue@gmail.com",
+    "bookingLabel": "BOOKING MGMT",
+    "bookingEmail": "booking@agency.com"
+  },
+  "social": [
+    { "label": "INSTAGRAM", "url": "https://instagram.com/victordonahuedrums" },
+    { "label": "TIKTOK", "url": "https://www.tiktok.com/@victordonahuedrums" }
+  ],
+  "djMix": {
+    "listenUrl": "#"
+  },
+  "contactForm": {
+    "endpoint": "",
+    "successUrl": ""
+  }
+}
+

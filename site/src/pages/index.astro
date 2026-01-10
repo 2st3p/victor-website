@@ -1,0 +1,661 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+
+import liveDates from "../data/live-dates.json";
+import studioTools from "../data/studio-tools.json";
+import siteLinks from "../data/site-links.json";
+
+const liveImages = [
+  "/assets/live-1.jpg",
+  "/assets/live-2.jpg",
+  "/assets/live-3.jpg",
+  "/assets/live-4.jpg",
+  "/assets/live-5.jpg",
+];
+
+const sections = ["INTRO", "LIVE", "STUDIO", "DJ", "CONTACT"];
+
+function liveStatusClass(status) {
+  switch (status) {
+    case "SOLD OUT":
+      return "line-through opacity-50";
+    case "TICKETS":
+      return "underline decoration-1 underline-offset-4";
+    case "DONE":
+      return "italic";
+    default:
+      return "";
+  }
+}
+
+function liveRowClass(status) {
+  if (status === "DONE") return "opacity-50";
+  return "";
+}
+---
+
+<Layout title="VICTOR: NO RULES">
+  <nav class="fixed top-0 w-full z-50 bg-white dark:bg-black border-b-2 border-black dark:border-white p-4" aria-label="Primary">
+    <div class="flex flex-wrap justify-between items-center px-4 md:px-8 gap-6">
+      <a
+        href="#INTRO"
+        class="font-display text-3xl md:text-4xl uppercase tracking-tighter whitespace-nowrap min-w-[15ch] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        aria-label="Victor Donahue"
+      >
+        <span class="js-brand-full" style="opacity: 0">VICTOR DONAHUE</span>
+      </a>
+
+      <div class="flex flex-wrap items-center justify-end gap-4">
+        <ul class="flex flex-wrap justify-end gap-4 md:gap-6 text-xs md:text-sm font-sans uppercase tracking-widest font-bold">
+          <li><a class="js-nav-link hover:underline underline-offset-4 decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#INTRO">INTRO</a></li>
+          <li><a class="js-nav-link hover:underline underline-offset-4 decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#LIVE">LIVE</a></li>
+          <li><a class="js-nav-link hover:underline underline-offset-4 decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#STUDIO">STUDIO</a></li>
+          <li><a class="js-nav-link hover:underline underline-offset-4 decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#DJ">DJ</a></li>
+          <li><a class="js-nav-link hover:underline underline-offset-4 decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#CONTACT">CONTACT</a></li>
+        </ul>
+
+        <button
+          id="strobeToggle"
+          type="button"
+          class="border-2 border-black dark:border-white px-3 py-2 font-sans text-xs uppercase tracking-widest font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+          aria-pressed="false"
+          aria-label="Toggle disco lights"
+        >
+          DISCO
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <p id="strobeWarning" class="sr-only">
+      Strobe rapidly inverts the page colors and may be unsafe for people with photosensitive epilepsy. Press Escape to stop.
+    </p>
+    <section class="min-h-screen pt-24 flex flex-col relative overflow-hidden bg-white dark:bg-black scroll-mt-28" id="INTRO">
+      <div class="absolute inset-0 z-0 opacity-[0.05] pointer-events-none flex flex-col justify-center select-none">
+        <div class="marquee-container font-display text-[75vw] leading-none uppercase text-black dark:text-white">
+          <div class="marquee-content">
+            CHROME • DISSOLUTION • ENTROPY • SIGNAL • NOISE • FREQUENCY • TASTE • SENSATION • CHEMICAL REACTION • ARCHITECTURE • MIND BURNING • SCAFFOLD • MOUTH • SOUND • SPEAKERS • KNOWING • KNOWER • BEING • BODY • MACHINE • PRETENDING • CONTAIN • COLLAPSE • COMING • NEVER LEFT • TEXTURE • NOW • WEIGHT • EXISTENCE • BOTTOM • ALWAYS EATING • TRANSCENDENCE • SURRENDER • DELICIOUS DECAY • FREQUENCIES CONTINUE • LANGUAGE STOPS • TASTE LINGERS • COPPER • FILLINGS • 3AM SCROLLING • ALGORITHM • RUST • ELECTRICITY • VOID OPENING • EYEBALLS TASTING • NAME TRAPPED • SINGING • CELL • NOTIFICATION • DIMENSION • DIMENSIONS • THOUGHT • DISSOLVING • SCREEN GLOWS • MISTAKE LIGHT • UNDERSTANDING • METAL • TEETH • SIGNAL STUCK • LICKING VOID • FINDING HUNGRY • LISTEN • WISDOM HUMS • WORDS DISSOLVE • CORRODES • ARTIFACT • REAL TIME AWARENESS • BASSLINE • MODULATION • SYNTH-WAVE • GLITCH • WARPED • CHOPPED • PITCHED • AUTOTUNED • FILTERED • LAYERED • UNDERGROUND • COLLECTIVE • CIPHER • BEATMAKER • REMIX • MASH-UP • ACAPELLA • LOOP • SAMPLE • DISTORTION • FEEDBACK • REVERB • BREAKBEAT • VINYL • TURNTABLE • DECIBEL • SUBWOOFER • DRONE • AMBIENT • TECHNO • INDUSTRIAL • OSCILLATION • EUPHORIA • TRANCE • ECSTATIC • ALTERED • EXPANDED CONSCIOUSNESS • FRAGMENTATION • SPECTRAL • PHANTOM • ETHEREAL • LUMINOUS • CHROMATIC • POLYPHONIC • CACOPHONY • DISSONANCE • HARMONICS • OVERTONES • UNDERTONES • SUBSONIC • ULTRASONIC • HERTZ • KILOHERTZ • VIBRATION • PULSATE • GYRATE • UNDULATE • CRYSTALLINE • FRACTURED • SHATTERED • OXIDIZED • CORRODED • SIGNAL FLOW • ANALOG • HYBRID • GLITCHY • STUTTERING • ARTIFACTS • ALIASING • QUANTIZATION • BIT-CRUSHING • DOWNSAMPLING • WAVETABLE • EURORACK • MODULAR PATCH • FREQUENCY SWEEP • PITCH SHIFT • TIME STRETCH • GRANULAR SYNTHESIS • TREMOLO • FLANGE • PHASER • CHORUS • OVERDRIVE • SATURATION • COMPRESSION • EXPANSION • GATING • AUTOMATION • MIDI • SEQUENCER • ARPEGGIATOR • DELAY • ECHO • HALL • SPRING • PLATE • SPACE • CONSUMING • BURNING • FRAGMENTING • COLLAPSING • TRANSCENDING • PULSE • THROB • HUM • BUZZ • STATIC • WHITE NOISE • PINK NOISE • BROWN NOISE • COLORED SPECTRUM • WAVEFORM • SPECTROGRAM • CASCADING • ELECTRIC • METALLIC • ACIDIC • ALKALINE • PH BALANCE • KINETIC ENERGY • POTENTIAL ENERGY • CHAOS • ORDER • DISORDER • SUBLIME • TERRIBLE • BEAUTIFUL • HIDEOUS • GORGEOUS • GROTESQUE • MAGNIFICENT • WRETCHED • EXQUISITE • ABYSMAL • INFINITE • FINITE • ETERNAL • TEMPORAL • PERPETUAL • MOMENTARY • FLEETING • EPHEMERAL • EVANESCENT • VANISHING • DISAPPEARING • EVAPORATING • SUBLIMATING • VAPORIZING • DISINTEGRATING • ATOMIZING • PULVERIZING • CRUSHING • GRINDING • LIQUEFYING • SOLIDIFYING • CRYSTALLIZING • SPLINTERING • EXPLODING • IMPLODING • EXPANDING • CONTRACTING • VIBRATING • OSCILLATING • RESONATING • HARMONIZING • INTERFERING • DIFFRACTING • REFRACTING • REFLECTING • ABSORBING • TRANSMITTING • BROADCASTING • RECEIVING • DECODING • ENCODING • ENCRYPTING • DECRYPTING • COMPRESSING • DECOMPRESSING • QUANTIZING • SAMPLING • RESAMPLING • CONVOLVING • CORRELATING • WINDOWING • SMOOTHING • PREDICTING • PROJECTING • STRETCHING • ACCELERATING • DECELERATING • MODULATING • DEMODULATING • PHASE SHIFTING • FREQUENCY SHIFTING • TIME SHIFTING • AMPLITUDE SHIFTING • NORMALIZATION • DIGITIZING • ANALOG CONVERTING • BINARIZING • HEXADECIMALIZING • OCTALIZING • FLOATING POINTING • FIXED POINTING • INTEGER OVERFLOWING • UNDERFLOWING • WRAPPING • CLIPPING • LIMITING • THRESHOLDING • HYSTERESIS • NONLINEAR • LINEAR • EXPONENTIAL • LOGARITHMIC • POWER LAW • STOCHASTIC • DETERMINISTIC • PSEUDORANDOM • SEED • ENTROPY SOURCE • SIGNAL-TO-NOISE RATIO • DYNAMIC RANGE • FREQUENCY RESPONSE • IMPULSE RESPONSE • STEP RESPONSE • RAMP RESPONSE • SWEEP RESPONSE • CHIRP RESPONSE •
+          </div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-6 md:px-12 z-10 flex flex-col lg:flex-row h-full flex-grow pt-12 md:pt-24 gap-12">
+        <div class="w-full lg:w-1/2 flex flex-col justify-between pb-12">
+          <div>
+            <h1 class="font-display text-[15vw] lg:text-[10vw] uppercase leading-[0.7] tracking-tighter text-black dark:text-white distressed-display distressed-display--heavy">
+              VICTOR<br />DONAHUE
+            </h1>
+
+            <p class="font-sans text-xs md:text-sm font-bold max-w-md leading-relaxed uppercase tracking-tight mt-8 border-t border-black dark:border-white pt-4">
+              Victor is an experienced musician active in the Manhattan rock scene. He has played around the world with indie and rock names like Wild Nothing. Currently the drummer for Sid Simons, Victor blurs the lines between technical percussion and the rough edges of the contemporary rock revival. As a producer and DJ, Victor translates this raw energy into deep, eclectic sets that have become a staple of the Lower Manhattan circuit.
+            </p>
+          </div>
+
+          <div class="mt-12 lg:mt-auto">
+            <a class="inline-block border-b-2 border-black dark:border-white pb-1 text-base font-sans font-bold tracking-wider uppercase hover:pl-4 transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#CONTACT">
+              CONTACT -&gt;
+            </a>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-1/2 min-h-[50vh] lg:min-h-0 relative overflow-hidden flex items-center justify-center">
+          <img
+            alt="Victor playing drums in high contrast black and white"
+            class="absolute inset-0 w-full h-full object-cover grayscale contrast-150"
+            src="/assets/hero.jpg"
+            width="1600"
+            height="2400"
+            decoding="async"
+            fetchpriority="high"
+          />
+
+          <div class="absolute bottom-6 left-6 text-white mix-blend-difference">
+            <span class="font-display text-5xl sm:text-7xl md:text-9xl leading-none block">DRUMS</span>
+            <span class="font-display text-5xl sm:text-7xl md:text-9xl leading-none block">PRODUCTION</span>
+            <span class="font-display text-5xl sm:text-7xl md:text-9xl leading-none block">DJ</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="min-h-screen bg-black text-white dark:bg-white dark:text-black py-24 relative flex flex-col justify-between scroll-mt-28" id="LIVE">
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="flex flex-col items-start mb-24">
+          <h2 class="font-display text-[18vw] md:text-[12vw] leading-[0.7] tracking-tighter distressed-display distressed-display--heavy">
+            LIVE
+          </h2>
+          <div class="w-full h-px bg-white dark:bg-black opacity-30 mt-8"></div>
+        </div>
+      </div>
+
+      <div class="mb-24 w-full">
+        <div class="aspect-[4/3] md:aspect-[16/9] w-full relative overflow-hidden bg-gray-900 js-carousel">
+          {liveImages.map((src, idx) => (
+            <div class={`absolute inset-0 transition-opacity duration-1000 ${idx === 0 ? 'opacity-100' : 'opacity-0'} js-carousel-item`} data-index={idx}>
+              <img 
+                alt={`Live performance ${idx + 1}`} 
+                class="w-full h-full object-cover grayscale contrast-125" 
+                src={src} 
+                loading={idx === 0 ? "eager" : "lazy"} 
+                decoding="async" 
+              />
+            </div>
+          ))}
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h3 class="font-display text-[15vw] md:text-[10vw] uppercase mix-blend-overlay opacity-30 pointer-events-none tracking-tighter">NOISE</h3>
+          </div>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+             {liveImages.map((_, idx) => (
+               <div class={`w-1.5 h-1.5 rounded-full border border-white transition-all duration-300 ${idx === 0 ? 'bg-white scale-125' : 'bg-transparent opacity-50'} js-carousel-dot`} data-index={idx}></div>
+             ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-6 md:px-12">
+        <div class="w-full max-w-5xl mx-auto">
+          <div class="flex justify-between items-end mb-8 border-b-2 border-white/50 dark:border-black/50 pb-4">
+            <h3 class="font-display text-4xl uppercase tracking-wide">2025 DATES</h3>
+            <span class="font-sans text-xs font-bold opacity-60">ARCHIVE</span>
+          </div>
+
+          <div class="w-full">
+            {liveDates.map((item) => (
+              <div class="border-b border-white/10 dark:border-black/10">
+                <div class="grid grid-cols-12 py-4 md:py-3 items-baseline gap-x-4 gap-y-1">
+                  <div class="col-span-12 md:col-span-2 font-sans text-[10px] md:text-xs font-bold opacity-70 mb-1 md:mb-0">{item.date}</div>
+                  <div class="col-span-12 md:col-span-4 font-display text-2xl sm:text-3xl md:text-2xl lg:text-3xl uppercase tracking-wide leading-none">{item.city}</div>
+                  <div class="col-span-12 md:col-span-6 font-display text-lg sm:text-xl md:text-lg lg:text-xl uppercase tracking-tight opacity-80 leading-none md:text-right mt-1 md:mt-0">{item.venue}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="w-full max-w-5xl mx-auto mt-24">
+          <div class="flex justify-between items-end mb-8 border-b-2 border-white/50 dark:border-black/50 pb-4">
+            <h3 class="font-display text-4xl uppercase tracking-wide">PREVIOUS</h3>
+            <span class="font-sans text-xs font-bold opacity-60">COLLABORATORS</span>
+          </div>
+
+          <p class="font-sans text-xs md:text-sm font-bold uppercase tracking-[0.2em] mb-12 opacity-70">
+            Wild Nothing • Hadji Gaviota • The Sweetheards • Colatura
+          </p>
+
+          <div
+            class="aspect-video w-full relative overflow-hidden border-2 border-white/50 dark:border-black/50 js-youtube"
+            data-video-id="icxJ6_Z8zP4"
+            data-title="Victor — Live video"
+          >
+            <button
+              type="button"
+              class="absolute inset-0 w-full h-full group text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              aria-label="Play live video"
+            >
+              <img
+                class="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
+                src="https://i.ytimg.com/vi/icxJ6_Z8zP4/hqdefault.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="strict-origin-when-cross-origin"
+              />
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[96px] drop-shadow-[4px_4px_0_rgba(0,0,0,1)] group-hover:scale-105 transition-transform duration-200">play_circle</span>
+              </div>
+            </button>
+            <noscript>
+              <a
+                class="absolute inset-0 w-full h-full flex items-center justify-center font-sans font-bold uppercase tracking-widest underline underline-offset-4 decoration-2"
+                href="https://www.youtube.com/watch?v=icxJ6_Z8zP4"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open video
+              </a>
+            </noscript>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="min-h-screen py-24 relative bg-white dark:bg-black flex flex-col justify-center scroll-mt-28" id="STUDIO">
+      <div class="container mx-auto px-6 md:px-12">
+        <h2 class="font-display text-[15vw] md:text-[10vw] uppercase mb-16 leading-[0.7] tracking-tighter distressed-display distressed-display--heavy">
+          STUDIO
+        </h2>
+
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div class="w-full lg:w-3/5">
+            <div class="relative w-full aspect-video bg-black overflow-hidden group border-2 border-black dark:border-white">
+              <img alt="Studio recording session" class="absolute inset-0 w-full h-full object-cover opacity-80 grayscale" src="/assets/studio.jpg" width="2400" height="1600" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span class="material-symbols-outlined text-8xl text-white">play_circle</span>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between font-sans font-bold text-xs uppercase tracking-widest opacity-60">
+              <span>DATE: 2023-09-12</span>
+              <span>FORMAT: RAW.WAV</span>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-2/5 flex flex-col justify-center">
+            <h3 class="font-display text-4xl uppercase mb-8 tracking-wide">TOOLS</h3>
+            <ul class="space-y-4">
+              {studioTools.map((tool) => (
+                <li class="font-display text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight border-b-2 border-black/20 dark:border-white/20 pb-4">{tool}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="min-h-screen bg-black text-white dark:bg-white dark:text-black py-24 relative overflow-hidden flex flex-col justify-center scroll-mt-28" id="DJ">
+      <div class="absolute right-0 top-0 w-1/2 h-full bg-white/5 dark:bg-black/5 mix-blend-overlay pointer-events-none"></div>
+      <div class="container mx-auto px-6 md:px-12 relative z-10">
+        <h2 class="font-display text-[18vw] md:text-[12vw] leading-[0.7] mb-24 select-none tracking-tighter distressed-display distressed-display--heavy">
+          DJ
+        </h2>
+
+        <p class="font-sans text-sm md:text-base font-bold uppercase tracking-widest leading-relaxed max-w-xl opacity-80 border-t-2 border-white/30 dark:border-black/30 pt-8 mb-16">
+          Victor is comfortable on both digital and vinyl, hosting regular nights in bars and clubs in Lower Manhattan. His love for music spans far beyond rock and roll, with an eclectic taste and a deep catalogue.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div class="flex flex-col">
+            <div class="aspect-square bg-white dark:bg-black relative group overflow-hidden border-2 border-white/50 dark:border-black/50">
+              <img alt="DJ cover image" class="absolute inset-0 w-full h-full object-cover grayscale contrast-125 opacity-40" src="/assets/dj.jpg" width="2400" height="1600" loading="lazy" decoding="async" />
+              <div class="absolute inset-0 noise-overlay opacity-40"></div>
+            </div>
+
+            <a class="mt-6 font-sans text-xs uppercase tracking-widest font-bold hover:underline decoration-2 underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href={siteLinks.djMix.listenUrl}>
+              LISTEN -&gt;
+            </a>
+
+            <div class="mt-12 border-2 border-white/50 dark:border-black/50 aspect-video md:aspect-[4/3] flex items-center justify-center bg-white/5 dark:bg-black/5 relative overflow-hidden group">
+              <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+                <span class="material-symbols-outlined text-5xl mb-4 opacity-40 group-hover:scale-110 transition-transform duration-700">playlist_play</span>
+                <h3 class="font-display text-xl uppercase tracking-widest opacity-40">Spotify Playlist</h3>
+                <p class="font-sans text-[10px] font-bold uppercase tracking-widest mt-4 opacity-20">Coming Soon</p>
+              </div>
+              <div class="absolute inset-0 noise-overlay opacity-10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="min-h-screen py-24 flex items-center justify-center bg-white dark:bg-black text-black dark:text-white relative scroll-mt-28" id="CONTACT">
+      <div class="container mx-auto px-6 md:px-12 w-full max-w-4xl">
+        <h2 class="font-display text-[15vw] md:text-[10vw] uppercase leading-[0.7] mb-16 text-center tracking-tighter distressed-display distressed-display--heavy">
+          CONTACT
+        </h2>
+
+        <div class="mb-20 border-b-2 border-black dark:border-white pb-12">
+          <div>
+            <span class="block font-sans font-bold text-xs uppercase tracking-widest mb-2 opacity-60">{siteLinks.emails.generalLabel}</span>
+            <a class="font-display text-xl md:text-2xl hover:opacity-50 transition-opacity tracking-wide focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href={`mailto:${siteLinks.emails.generalEmail}`}>
+              {siteLinks.emails.generalEmail.toUpperCase()}
+            </a>
+          </div>
+        </div>
+
+        <form
+          class="space-y-12 js-contact-form"
+          method="POST"
+          action={siteLinks.contactForm.endpoint || ""}
+          data-endpoint={siteLinks.contactForm.endpoint}
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="group">
+              <label class="block font-sans font-bold text-xs uppercase tracking-widest mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity" for="name">NAME / ORG</label>
+              <input class="w-full bg-transparent border-0 border-b-2 border-black/20 dark:border-white/20 p-0 py-4 font-display text-2xl focus:ring-0 focus:border-black dark:focus:border-white transition-colors placeholder-transparent rounded-none" id="name" name="name" placeholder="NAME" type="text" required />
+            </div>
+            <div class="group">
+              <label class="block font-sans font-bold text-xs uppercase tracking-widest mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity" for="email">EMAIL</label>
+              <input class="w-full bg-transparent border-0 border-b-2 border-black/20 dark:border-white/20 p-0 py-4 font-display text-2xl focus:ring-0 focus:border-black dark:focus:border-white transition-colors placeholder-transparent rounded-none" id="email" name="email" placeholder="EMAIL" type="email" required />
+            </div>
+          </div>
+
+          <div class="group">
+            <label class="block font-sans font-bold text-xs uppercase tracking-widest mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity" for="message">MESSAGE</label>
+            <textarea class="w-full bg-transparent border-0 border-b-2 border-black/20 dark:border-white/20 p-0 py-4 font-display text-2xl focus:ring-0 focus:border-black dark:focus:border-white transition-colors placeholder-transparent resize-none rounded-none" id="message" name="message" placeholder="MESSAGE" rows="2" required></textarea>
+          </div>
+
+          <div class="pt-8 flex flex-col md:flex-row md:items-center gap-6">
+            <button class="w-full md:w-auto bg-black text-white dark:bg-white dark:text-black font-display text-4xl uppercase py-4 px-12 tracking-widest border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors duration-300 rounded-none" type="submit">
+              SEND -&gt;
+            </button>
+          </div>
+        </form>
+        <noscript>
+          <p class="mt-6 font-sans text-xs font-bold uppercase tracking-widest opacity-70">
+            JS is off. Email directly:
+            <a class="underline underline-offset-4 decoration-1" href={`mailto:${siteLinks.emails.generalEmail}`}>{siteLinks.emails.generalEmail}</a>
+          </p>
+        </noscript>
+
+        <div class="mt-24 flex flex-col md:flex-row gap-8 md:gap-16 pt-8 border-t-2 border-black/10 dark:border-white/10">
+          {siteLinks.social.map((link) => (
+            <a class="font-sans text-base font-bold hover:line-through tracking-widest uppercase focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href={link.url}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black text-white dark:bg-white dark:text-black py-8 border-t-2 border-white/20 dark:border-black/20 text-center font-sans font-bold text-xs tracking-[0.2em] uppercase">
+      <p>
+        © 2025 ERIK KERNAN PRODUCTIONS GITHUB:
+        <a class="underline underline-offset-4 decoration-2 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://github.com/2st3p" target="_blank" rel="noreferrer">@2st3p</a>
+      </p>
+    </footer>
+
+    <canvas id="disco-canvas" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-1000 mix-blend-screen"></canvas>
+  </main>
+
+  <script is:inline define:vars={{ generalEmail: siteLinks.emails.generalEmail }}>
+    (() => {
+      const strobeToggle = document.getElementById("strobeToggle");
+      const canvas = document.getElementById("disco-canvas");
+      if (!strobeToggle || !canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      let discoActive = false;
+      let animationFrame = null;
+      let spots = [];
+
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        generateSpots();
+      };
+
+      const generateSpots = () => {
+        spots = [];
+        // Use a staggered grid (hexagonal packing) for even distribution
+        const spacingX = 140; 
+        const spacingY = 100;
+        
+        // Generate extra columns/rows for seamless wrapping
+        const rows = Math.ceil(canvas.height / spacingY) + 2;
+        const cols = Math.ceil(canvas.width / spacingX) + 4;
+        
+        for (let r = -1; r < rows; r++) {
+          const isEvenRow = r % 2 === 0;
+          const rowOffsetX = isEvenRow ? 0 : spacingX / 2;
+          
+          for (let c = -2; c < cols; c++) {
+            const baseX = c * spacingX + rowOffsetX;
+            const baseY = r * spacingY;
+            
+            // Constrain randomness to avoid clumping
+            // Max offset is < 50% of spacing
+            const randomX = (Math.random() - 0.5) * (spacingX * 0.4);
+            const randomY = (Math.random() - 0.5) * (spacingY * 0.4);
+            
+            spots.push({
+              x: baseX + randomX,
+              y: baseY + randomY,
+              // Store relative position in the "infinite" stream
+              // We'll use this to keep tracking seamless
+              offsetX: randomX,
+              baseY: baseY + randomY, 
+              size: 5 + Math.random() * 5,
+              brightness: 0.5 + Math.random() * 0.5,
+              phase: Math.random() * Math.PI * 2 // For twinkling
+            });
+          }
+        }
+      };
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      const loop = (time) => {
+        if (!discoActive) return;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Light blending mode prevents dark "shadow" clumps
+        ctx.globalCompositeOperation = 'screen';
+        
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const maxDist = Math.hypot(centerX, centerY);
+        const speed = 1.5;
+        
+        spots.forEach(spot => {
+          // Update Position
+          spot.x += speed;
+          
+          // Seamless wrap
+          const totalWidth = canvas.width + 200; // Buffer
+          if (spot.x > canvas.width + 100) {
+            spot.x -= totalWidth;
+          }
+
+          // Twinkle effect (sine wave based on time)
+          const twinkle = 0.8 + Math.sin(time * 0.002 + spot.phase) * 0.2;
+          
+          // Calculate distortion based on distance from center
+          const distToCenter = Math.hypot(spot.x - centerX, spot.y - centerY);
+          const normalizedDist = distToCenter / maxDist;
+          
+          // Fade edges naturally
+          const edgeFade = Math.max(0, 1 - Math.pow(normalizedDist, 3));
+          const opacity = spot.brightness * edgeFade * twinkle;
+          
+          if (opacity < 0.01) return;
+          
+          // Perspective stretch
+          const stretch = 1 + (normalizedDist * normalizedDist) * 1.5;
+          
+          ctx.save();
+          ctx.translate(spot.x, spot.y);
+          ctx.scale(stretch, 1); // Horizontal stretch only
+          
+          const size = spot.size * (1 + normalizedDist * 0.5);
+          
+          // 1. Soft Glow
+          const glowSize = size * 3;
+          const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, glowSize);
+          glow.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.3})`);
+          glow.addColorStop(1, "rgba(255, 255, 255, 0)");
+          
+          ctx.fillStyle = glow;
+          ctx.beginPath();
+          ctx.arc(0, 0, glowSize, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // 2. Bright Core (Sharp ellipse)
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, size, size * 0.6, 0, 0, Math.PI * 2);
+          ctx.fill();
+          
+          ctx.restore();
+        });
+        
+        ctx.globalCompositeOperation = 'source-over'; // Reset
+        animationFrame = requestAnimationFrame(loop);
+      };
+
+      const startDisco = () => {
+        discoActive = true;
+        document.documentElement.classList.add("disco-mode");
+        canvas.classList.remove("opacity-0");
+        strobeToggle.setAttribute("aria-pressed", "true");
+        // Re-generate spots on start to ensure clean state
+        generateSpots();
+        loop(0);
+      };
+
+      const stopDisco = () => {
+        discoActive = false;
+        document.documentElement.classList.remove("disco-mode");
+        canvas.classList.add("opacity-0");
+        strobeToggle.setAttribute("aria-pressed", "false");
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      };
+
+      strobeToggle.addEventListener("click", () => {
+        if (discoActive) stopDisco();
+        else startDisco();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") stopDisco();
+      });
+
+      window.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopDisco();
+      });
+
+      const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
+      const idToLink = new Map();
+      for (const link of navLinks) {
+        const href = link.getAttribute("href") || "";
+        if (!href.startsWith("#")) continue;
+        idToLink.set(href.slice(1), link);
+      }
+
+      const setActive = (id) => {
+        for (const [sectionId, link] of idToLink.entries()) {
+          const active = sectionId === id;
+          link.classList.toggle("underline", active);
+          if (active) link.setAttribute("aria-current", "true");
+          else link.removeAttribute("aria-current");
+        }
+      };
+
+      setActive(location.hash?.replace("#", "") || "INTRO");
+
+      const sections = Array.from(document.querySelectorAll("main section[id]"));
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
+          if (visible[0]?.target?.id) setActive(visible[0].target.id);
+        },
+        { root: null, rootMargin: "-35% 0px -55% 0px", threshold: [0.01, 0.1, 0.25, 0.5] }
+      );
+      for (const section of sections) observer.observe(section);
+
+      const brandFull = document.querySelector(".js-brand-full");
+      const intro = document.getElementById("INTRO");
+      const updateBrand = () => {
+        if (!brandFull || !intro) return;
+
+        const passedPx = Math.max(0, -intro.getBoundingClientRect().bottom);
+        const progress = Math.min(passedPx / 160, 1);
+
+        brandFull.style.opacity = String(progress);
+      };
+
+      updateBrand();
+      let brandTicking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (brandTicking) return;
+          brandTicking = true;
+          requestAnimationFrame(() => {
+            updateBrand();
+            brandTicking = false;
+          });
+        },
+        { passive: true }
+      );
+
+      for (const wrap of document.querySelectorAll(".js-youtube")) {
+        const button = wrap.querySelector("button");
+        if (!button) continue;
+        button.addEventListener("click", () => {
+          const videoId = wrap.getAttribute("data-video-id");
+          if (!videoId) return;
+          const title = wrap.getAttribute("data-title") || "YouTube video";
+
+          const iframe = document.createElement("iframe");
+          iframe.className = "absolute inset-0 w-full h-full";
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+          iframe.title = title;
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+          wrap.innerHTML = "";
+          wrap.appendChild(iframe);
+        });
+      }
+
+      const form = document.querySelector(".js-contact-form");
+      if (!form) return;
+
+      form.addEventListener("submit", (event) => {
+        const endpoint = form.getAttribute("data-endpoint");
+        if (endpoint) return;
+
+        event.preventDefault();
+        const name = form.querySelector("#name")?.value || "";
+        const email = form.querySelector("#email")?.value || "";
+        const message = form.querySelector("#message")?.value || "";
+
+        const subject = `Victor Website — ${name || "New message"}`;
+        const body = [`Name: ${name}`, `Email: ${email}`, "", message].join("\n");
+        const mailto = `mailto:${generalEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+      });
+
+      // Carousel logic
+      const carousels = document.querySelectorAll(".js-carousel");
+      carousels.forEach((carousel) => {
+        const items = Array.from(carousel.querySelectorAll(".js-carousel-item"));
+        const dots = Array.from(carousel.querySelectorAll(".js-carousel-dot"));
+        let currentIndex = 0;
+        let interval = null;
+
+        const showIndex = (index) => {
+          items.forEach((item, i) => {
+            item.classList.toggle("opacity-100", i === index);
+            item.classList.toggle("opacity-0", i !== index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("bg-white", i === index);
+            dot.classList.toggle("scale-125", i === index);
+            dot.classList.toggle("opacity-50", i !== index);
+          });
+          currentIndex = index;
+        };
+
+        const next = () => {
+          showIndex((currentIndex + 1) % items.length);
+        };
+
+        const start = () => {
+          if (interval) clearInterval(interval);
+          interval = setInterval(next, 5000);
+        };
+
+        carousel.addEventListener("mouseenter", () => clearInterval(interval));
+        carousel.addEventListener("mouseleave", start);
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => {
+            showIndex(i);
+            start();
+          });
+        });
+
+        start();
+      });
+    })();
+  </script>
+</Layout>
