@@ -1,5 +1,4 @@
-# Victor Website (Brutalist V1)
-
+# Victor Website
 Static single-page site built with Astro + Tailwind.
 
 Top-right `STROBE` button rapidly inverts the page colors (images unchanged). Press `Esc` to stop.
