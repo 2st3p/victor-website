@@ -9,9 +9,6 @@
     { "label": "INSTAGRAM", "url": "https://instagram.com/victordonahuedrums" },
     { "label": "TIKTOK", "url": "https://www.tiktok.com/@victordonahuedrums" }
   ],
-  "djMix": {
-    "listenUrl": "#"
-  },
   "contactForm": {
     "endpoint": "",
     "successUrl": ""
