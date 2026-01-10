@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --nav-h-mobile: 3.5rem;
+  --nav-h-desktop: 4.5rem;
+}
+
 html {
-  scroll-padding-top: 6.5rem;
+  scroll-padding-top: calc(var(--nav-h-mobile) + 1rem);
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: calc(var(--nav-h-desktop) + 1rem);
+  }
 }
 
 .no-smoothing {
@@ -61,9 +72,9 @@ html {
 }
 
 .distressed-display {
-  --stroke-width: 1px;
-  --shadow-x: 2px;
-  --shadow-y: 2px;
+  --stroke-width: clamp(0.5px, 0.1vw, 1px);
+  --shadow-x: clamp(1px, 0.25vw, 2px);
+  --shadow-y: clamp(1px, 0.25vw, 2px);
 
   -webkit-text-stroke: var(--stroke-width) currentColor;
   -webkit-text-fill-color: transparent;
@@ -71,9 +82,9 @@ html {
 }
 
 .distressed-display--heavy {
-  --stroke-width: 2px;
-  --shadow-x: 4px;
-  --shadow-y: 4px;
+  --stroke-width: clamp(1px, 0.18vw, 2px);
+  --shadow-x: clamp(2px, 0.45vw, 4px);
+  --shadow-y: clamp(2px, 0.45vw, 4px);
 }
 
 .noise-overlay {
